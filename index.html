@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loa DIY Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background-color: #222;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav input[type="text"] {
+      padding: 5px;
+      width: 200px;
+    }
+    nav button {
+      margin-left: 10px;
+      padding: 5px 10px;
+    }
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      padding: 20px;
+      gap: 20px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      background: #fff;
+    }
+    .product img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    #cart {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      width: 300px;
+      background: #fff;
+      border: 1px solid #888;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .hidden {
+      display: none;
+    }
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: relative;
+    }
+    #momo-qr {
+      margin-top: 10px;
+      text-align: center;
+    }
+    #momo-qr img {
+      width: 100%;
+      max-width: 250px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Loa DIY Store</h1>
+    <nav>
+      <input type="text" id="search" placeholder="Tìm sản phẩm..." oninput="filterProducts()">
+      <button onclick="toggleCart()">Giỏ hàng (<span id="cart-count">0</span>)</button>
+    </nav>
+  </header>  <main id="product-list"></main>  <div id="cart" class="hidden">
+    <h2>Giỏ hàng</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Tổng cộng:</strong> <span id="total-price">0</span>đ</p>
+    <button onclick="clearCart()">Xoá giỏ hàng</button>
+    <button onclick="checkout()">Thanh toán</button>
+    <div id="momo-qr"></div>
+  </div>  <footer>
+    &copy; 2025 Loa DIY Store. All rights reserved.
+  </footer>  <script>
+    const products = [
+      { id: 1, name: "Loa DIY Mini", price: 500000, image: "https://i.ibb.co/d07zztj0/Video-Capture-20250508-154335.jpg" },
+      { id: 2, name: "Loa Bluetooth Custom", price: 750000, image: "https://via.placeholder.com/200x150?text=Bluetooth" },
+      { id: 3, name: "Midbass BB2", price: 120000, image: "https://via.placeholder.com/200x150?text=Midbass" },
+      { id: 4, name: "Treble Acton3", price: 150000, image: "https://via.placeholder.com/200x150?text=Treble" },
+      { id: 5, name: "Pin Li-ion 5S 2.5Ah", price: 180000, image: "https://via.placeholder.com/200x150?text=Pin+Li-ion" }
+    ];
+
+    const cart = [];
+
+    function renderProducts(list = products) {
+      const container = document.getElementById("product-list");
+      container.innerHTML = "";
+      list.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>Giá: ${p.price.toLocaleString()}đ</p>
+          <button onclick="addToCart(${p.id})">Thêm vào giỏ</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function addToCart(id) {
+      const product = products.find(p => p.id === id);
+      cart.push(product);
+      updateCart();
+    }
+
+    function updateCart() {
+      document.getElementById("cart-count").innerText = cart.length;
+      const items = document.getElementById("cart-items");
+      const total = document.getElementById("total-price");
+      items.innerHTML = "";
+      let totalPrice = 0;
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - ${item.price.toLocaleString()}đ`;
+        items.appendChild(li);
+        totalPrice += item.price;
+      });
+      total.innerText = totalPrice.toLocaleString();
+    }
+
+    function toggleCart() {
+      document.getElementById("cart").classList.toggle("hidden");
+    }
+
+    function clearCart() {
+      cart.length = 0;
+      updateCart();
+      document.getElementById("momo-qr").innerHTML = "";
+      toggleCart();
+    }
+
+    function checkout() {
+      const momoPhone = "0973204563"; // Thay số điện thoại Momo của bạn tại đây
+      const qr = document.getElementById("momo-qr");
+      qr.innerHTML = `
+        <h3>Quét mã QR để thanh toán bằng Momo</h3>
+        <img src="https://img.vietqr.io/image/MOMO-${momoPhone}-compact.png" alt="QR Momo" />
+        <p>Hoặc <a href="https://nhantien.momo.vn/${momoPhone}" target="_blank">bấm vào đây</a> để mở ứng dụng Momo</p>
+      `;
+    }
+
+    function filterProducts() {
+      const keyword = document.getElementById("search").value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(keyword));
+      renderProducts(filtered);
+    }
+
+    renderProducts();
+  </script></body>
+</html>  </script></body>
+</html>
