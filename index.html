@@ -4,21 +4,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trang Sản Phẩm</title>
+  <title>Loa DIY</title>
   <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; }
-    .product { padding: 20px; text-align: center; }
-    img { width: 300px; border-radius: 10px; }
-    h3 { margin-top: 10px; }
-    button { padding: 10px 20px; font-size: 16px; margin-top: 10px; }
+    body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 0; }
+    h1 { text-align: center; padding: 20px 0; }
+    .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+    .product { background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15px; width: 300px; text-align: center; transition: transform 0.2s; }
+    .product:hover { transform: scale(1.03); }
+    .product img { width: 100%; border-radius: 8px; }
+    .product h3 { margin: 10px 0 5px; }
+    .product p { color: #333; margin: 5px 0; }
+    .product a { display: inline-block; margin-top: 10px; padding: 8px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
   </style>
 </head>
 <body>
-  <div class="product">
-    <img src="https://i.ibb.co/FbmdJtLZ/Messenger-creation-19-A6-E275-F155-42-C9-A305-519-FBC080-BDA.jpg" alt="Loa DIY in3d">
-    <h3>Loa DIY mono 60w led viền ARGB</h3>
-    <p>Giá: 1.800.000đ</p>
-    <a href="product.html?sp=loa-diy-60w"><button>Xem chi tiết</button></a>
+  <h1>Danh sách sản phẩm</h1>
+  <div class="products">
+    <div class="product">
+      <img src="https://i.ibb.co/d07zztj0/Video-Capture-20250508-154335.jpg" alt="Loa DIY mono 60w led viền ARGB">
+      <h3>DIY mono 60w led viền ARGB"</h3>
+      <p>Giá: 1.500.000đ</p>
+      <a href="product.html?sp=loa-diy-60w">Xem chi tiết</a>
+    </div>
+    <div class="product">
+      <img src="https://i.ibb.co/Tx3rr9cC/Video-Capture-20250515-213358.jpg" alt="Loa DIY mono 20w">
+      <h3>Loa DIY mono 20w</h3>
+      <p>Giá: 799.000đ</p>
+      <a href="product1.html?sp=loa-diy-20w">Xem chi tiết</a>
+    </div>
   </div>
 </body>
 </html>
