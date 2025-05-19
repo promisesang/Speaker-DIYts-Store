@@ -55,5 +55,20 @@
   <a href="sms:0973204563">SMS</a>
   <a href="https://maps.app.goo.gl/yMeMS3wQKfMVgVGF8" target="_blank">Tìm đường</a>
 </div>
+<script>
+function toggleInfoMenu() {
+  const menu = document.getElementById("infoMenu");
+  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+// Đóng menu khi click ra ngoài
+document.addEventListener("click", function (e) {
+  const toggle = document.querySelector(".info-toggle");
+  const menu = document.getElementById("infoMenu");
+  if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
 </body>
 </html>
