@@ -26,6 +26,56 @@
     <p><strong>Loa:</strong> Eastech tháo từ cụm Harman Kardon</p>
     <p><strong>Tùy chọn:</strong> Có thể thêm LED viền (+150K)</p>
     <p><strong>Sạc:</strong> Type-C tiện lợi</p>
+
+            <h2>Đặt hàng ngay</h2>
+<form action="https://formsubmit.co/promisesang@gmail.com" method="POST" id="orderForm">
+<input type="hidden" name="Sản phẩm" value="Loa DIY mono 20w">
+<input type="hidden" name="Giá" value="799.000đ">
+  <input type="hidden" name="_subject" value="Đơn đặt hàng mới từ website!">
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Các trường còn lại giữ nguyên -->>
+
+  <label>Họ và tên:</label><br>
+  <input type="text" name="name" required><br><br>
+
+  <label>Số điện thoại:</label><br>
+  <input type="tel" name="phone" required><br><br>
+
+    <label>Email:</label><br>
+  <input type="email" name="email" placeholder="Địa chỉ email"><br><br>
+
+  <label>Địa chỉ:</label><br>
+  <textarea name="address" required></textarea><br><br>
+
+  <label>Ghi chú:</label><br>
+  <textarea name="note"></textarea><br><br>
+  <label>Cọc 300k, chụp ảnh giao dịch gửi vào tele/messenger</label><br>
+  <label>TRUONG TAN SANG</label><br>
+  <label>VIETINBANK</label><br>
+  <label>0973204563</label><br>
+  <img src="https://i.ibb.co/zHD8njQd/i-Pay-Tue-May-20-00-50-34-GMT-07-00-2025.jpg">
+
+  <button type="submit">Gửi đơn hàng</button>
+  <input type="hidden" name="_next" value="thanks.html">
+  <input type="hidden" name="_autoresponse" value="Cảm ơn bạn đã đặt hàng">
+
+</form>
+  <script>
+  document.getElementById("orderForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // chặn gửi đi mặc định
+    const form = e.target;
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    }).then(() => {
+      alert("Đặt hàng thành công!\nĐơn hàng của bạn sẽ hoàn thành sau 7 ngày (không tính Thứ 7, Chủ nhật).");
+      form.reset(); // xóa dữ liệu form
+    });
+  });
+</script>
+
     <a class="button" href="index.html">Quay lại trang chính</a>
   </div>
 </body>
