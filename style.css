@@ -44,8 +44,8 @@
 }
 
 body {
-  background-image: url('https://img.icons8.com/ios/50/speaker--v1.png');
-  background-repeat: repeat;
-  background-size: 80px;
-  opacity: 0.05;
+  background-image: url('https://www.transparenttextures.com/patterns/connected.png');
+  background-color: #f4f4f4;
+  background-size: 300px;
+  font-family: sans-serif;
 }
