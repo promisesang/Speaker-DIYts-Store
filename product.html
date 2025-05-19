@@ -44,6 +44,9 @@
   <label>Số điện thoại:</label><br>
   <input type="tel" name="phone" required><br><br>
 
+  <label>Email:</label><br>
+  <input type="email" name="email" required><br><br>
+
   <label>Địa chỉ:</label><br>
   <textarea name="address" required></textarea><br><br>
 
@@ -62,7 +65,7 @@
       method: form.method,
       body: new FormData(form),
     }).then(() => {
-      alert("Đặt hàng thành công!\nĐơn hàng của bạn sẽ hoàn thành sau 7 ngày (không tính Thứ 7, Chủ nhật).");
+      alert("Đặt hàng thành công!\nĐơn hàng của bạn sẽ hoàn thành sau 7 ngày (không tính Thứ 7, Chủ nhật).\nVui lòng kiểm tra mail để xem đơn hàng.");
       form.reset(); // xóa dữ liệu form
     });
   });
