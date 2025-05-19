@@ -1,0 +1,29 @@
+/* style.css */
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #111;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 999;
+  font-size: 14px;
+}
+
+.bottom-bar a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.bottom-bar i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
