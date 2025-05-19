@@ -31,10 +31,9 @@
 
     <h2>Đặt hàng ngay</h2>
 <form action="https://formsubmit.co/promisesang@gmail.com" method="POST" id="orderForm">
-<input type="hidden" name="Sản phẩm" value="Loa DIY mono 60w ARGB">
-<input type="hidden" name="Giá" value="1.799.000">
+<input type="hidden" name="Sản phẩm" value="Loa DIY mono 60w led viền ARGB">
+<input type="hidden" name="Giá" value="1.799.000đ">
   <input type="hidden" name="_subject" value="Đơn đặt hàng mới từ website!">
-  <input type="hidden" name="_next" value="https://promisesang.github.io/Speaker-DIYts-Store/thanks.html"> <!-- Chuyển hướng sau khi gửi -->
   <input type="hidden" name="_captcha" value="false">
 
   <!-- Các trường còn lại giữ nguyên -->>
@@ -52,9 +51,22 @@
   <textarea name="note"></textarea><br><br>
 
   <button type="submit">Gửi đơn hàng</button>
-
-  
 </form>
+
+<script>
+  document.getElementById("orderForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // chặn gửi đi mặc định
+    const form = e.target;
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    }).then(() => {
+      alert("Đặt hàng thành công!\nĐơn hàng của bạn sẽ hoàn thành sau 7 ngày (không tính Thứ 7, Chủ nhật).");
+      form.reset(); // xóa dữ liệu form
+    });
+  });
+</script>
 
     <a class="button" href="index.html">Quay lại trang chính</a>
   </div>
