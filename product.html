@@ -44,6 +44,7 @@
   <label>Số điện thoại:</label><br>
   <input type="tel" name="phone" required><br><br>
 
+    <label>Email:</label><br>
   <input type="email" name="email" placeholder="Địa chỉ email"><br><br>
 
   <label>Địa chỉ:</label><br>
@@ -57,6 +58,20 @@
   <input type="hidden" name="_autoresponse" value="Cảm ơn bạn đã đặt hàng">
   
 </form>
+  <script>
+  document.getElementById("orderForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // chặn gửi đi mặc định
+    const form = e.target;
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    }).then(() => {
+      alert("Đặt hàng thành công!\nĐơn hàng của bạn sẽ hoàn thành sau 7 ngày (không tính Thứ 7, Chủ nhật).");
+      form.reset(); // xóa dữ liệu form
+    });
+  });
+</script>
     <a class="button" href="index.html">Quay lại trang chính</a>
   </div>
 </body>
