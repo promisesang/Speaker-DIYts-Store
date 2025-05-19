@@ -30,7 +30,13 @@
     <p><strong>Màu sắc:</strong> Đa dạng</p>
 
     <h2>Đặt hàng ngay</h2>
-<form id="orderForm">
+<form id="orderForm" action="https://formsubmit.co/promisesang@gmail.com" method="POST" id="orderForm">
+  <input type="hidden" name="_subject" value="Đơn đặt hàng mới từ website!">
+  <input type="hidden" name="_next" value="thanks.html"> <!-- Chuyển hướng sau khi gửi -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Các trường còn lại giữ nguyên -->>
+
   <label>Họ và tên:</label><br>
   <input type="text" name="name" required><br><br>
 
@@ -45,12 +51,7 @@
 
   <button type="submit">Gửi đơn hàng</button>
 
-  action="https://formsubmit.co/promisesang@gmail.com" method="POST" id="orderForm">
-  <input type="hidden" name="_subject" value="Đơn đặt hàng mới từ website!">
-  <input type="hidden" name="_next" value="thanks.html"> <!-- Chuyển hướng sau khi gửi -->
-  <input type="hidden" name="_captcha" value="false">
-
-  <!-- Các trường còn lại giữ nguyên -->
+  
 </form>
 
     <a class="button" href="index.html">Quay lại trang chính</a>
